@@ -46,7 +46,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "babel scr -d dist",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -74,10 +74,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.5",
-    "@babel/core": "^7.21.8",
+    "@babel/core": "^7.19.1",
     "@babel/eslint-parser": "^7.19.1",
-    "@babel/preset-env": "^7.21.5",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-app": "7.0.1",
