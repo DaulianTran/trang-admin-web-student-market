@@ -445,34 +445,65 @@ export default function category() {
 
                 {/* Công cụ thao tác tố cáo */}
                 <TableCell align="center">
-                  <Tooltip title="Duyệt tố cáo">
-                    <IconButton
-                      color="primary"
-                      sx={{ m: '0 4px' }}
-                      onClick={() => {
-                        handleOpenTargetDetailInfo(
-                          row.attributes?.type === 'product'
-                            ? {
-                                id: row.attributes.product.data?.id,
-                                type: 'product',
-                                name: row.attributes.product.data?.attributes
-                                  .name,
-                                description: row.attributes.description,
-                              }
-                            : {
-                                id: row.attributes.accused.data?.id,
-                                type: 'user',
-                                name: row.attributes.accused.data?.attributes
-                                  .username,
-                                description: row.attributes.description,
-                              },
-                        )
-                        setSelectedReport(row)
-                      }}
-                    >
-                      <LoginIcon />
-                    </IconButton>
-                  </Tooltip>
+                  {row.attributes?.processingStatus === 'Uncomplete' ? (
+                    <Tooltip title="Duyệt tố cáo">
+                      <IconButton
+                        color="primary"
+                        sx={{ m: '0 4px' }}
+                        onClick={() => {
+                          handleOpenTargetDetailInfo(
+                            row.attributes?.type === 'product'
+                              ? {
+                                  id: row.attributes.product.data?.id,
+                                  type: 'product',
+                                  name: row.attributes.product.data?.attributes
+                                    .name,
+                                  description: row.attributes.description,
+                                }
+                              : {
+                                  id: row.attributes.accused.data?.id,
+                                  type: 'user',
+                                  name: row.attributes.accused.data?.attributes
+                                    .username,
+                                  description: row.attributes.description,
+                                },
+                          )
+                          setSelectedReport(row)
+                        }}
+                      >
+                        <LoginIcon />
+                      </IconButton>
+                    </Tooltip>
+                  ) : (
+                    <Tooltip title="Thông tin tố cáo">
+                      <IconButton
+                        color="primary"
+                        sx={{ m: '0 4px' }}
+                        onClick={() => {
+                          handleOpenTargetDetailInfo(
+                            row.attributes?.type === 'product'
+                              ? {
+                                  id: row.attributes.product.data?.id,
+                                  type: 'product',
+                                  name: row.attributes.product.data?.attributes
+                                    .name,
+                                  description: row.attributes.description,
+                                }
+                              : {
+                                  id: row.attributes.accused.data?.id,
+                                  type: 'user',
+                                  name: row.attributes.accused.data?.attributes
+                                    .username,
+                                  description: row.attributes.description,
+                                },
+                          )
+                          setSelectedReport(row)
+                        }}
+                      >
+                        <RemoveRedEyeIcon sx={{ color: 'grey' }} />
+                      </IconButton>
+                    </Tooltip>
+                  )}
                   {row.attributes?.processingStatus === 'Uncomplete' ? (
                     <Tooltip title="Đánh dấu đã duyệt">
                       <IconButton
