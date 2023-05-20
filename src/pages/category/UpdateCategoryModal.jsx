@@ -14,7 +14,7 @@ import Snackbar from '@mui/material/Snackbar'
 import CloseIcon from '@mui/icons-material/Close'
 import IconButton from '@mui/material/IconButton'
 import axios from 'axios'
-
+import placeholder from '../../../src/assets/images/misc/image-placeholder.png'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
 import { Avatar, Box } from '../../../node_modules/@mui/material/index'
@@ -234,7 +234,7 @@ export default function UpdateCategoryModal(props) {
                         : image
                         ? process.env.REACT_APP_SERVER_ENDPOINT +
                           image.attributes.url
-                        : require('../../../src/assets/images/misc/image-placeholder.png')
+                        : placeholder
                     }
                     onClick={handleOpenImage}
                     // className={

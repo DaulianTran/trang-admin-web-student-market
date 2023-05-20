@@ -66,8 +66,8 @@ function a11yProps(index) {
 const Profile = () => {
   const theme = useTheme()
 
-  const avatar1 = require(process.env.REACT_APP_SERVER_ENDPOINT +
-    `uploads/ssm_30_teeme_e3556d7af0.jpg`)
+  const avatar1 =
+    'https://cdnmedia.webthethao.vn/uploads/2021-05-22/ssm-30-teeme.jpg'
   const anchorRef = useRef(null)
   const [open, setOpen] = useState(false)
   const handleToggle = () => {

@@ -1,6 +1,6 @@
 // material-ui
 import { useTheme } from '@mui/material/styles'
-
+import brandLogo from '../../assets/images/misc/brand-logo.png'
 /**
  * if you want to use image instead of <svg> uncomment following.
  *
@@ -22,10 +22,7 @@ const Logo = () => {
      *
      */
     <>
-      <img
-        src={require('../../assets/images/misc/brand-logo.png')}
-        alt="Brand logo"
-      />
+      <img src={brandLogo} alt="Brand logo" />
     </>
   )
 }

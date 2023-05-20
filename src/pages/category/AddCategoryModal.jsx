@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Snackbar from '@mui/material/Snackbar'
 import CloseIcon from '@mui/icons-material/Close'
 import axios from 'axios'
+import placeholder from '../../../src/assets/images/misc/image-placeholder.png'
 
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
@@ -105,7 +106,7 @@ export default function AddUserModal(props) {
   }
 
   // Upload file here
-  const imagePlaceholder = require('../../../src/assets/images/misc/image-placeholder.png')
+  const imagePlaceholder = placeholder
   const [urlAvatar, setUrlAvatar] = useState()
   const [fileAvatarInput, setFileAvatarInput] = useState()
 
