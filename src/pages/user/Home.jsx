@@ -34,8 +34,18 @@ export default function category() {
   const [selectedPage, setSelectedPage] = React.useState(1)
   const [change, setChange] = React.useState(true)
 
-  const handleGetPage = (event, elementNum) => {
-    setSelectedPage(elementNum)
+  const [currentPage, setCurrentPage] = React.useState(1)
+
+  const [totalPages, setTotalPages] = React.useState(1)
+
+  const PER_PAGE = 7 // Số lượng phần tử hiển thị trên mỗi trang
+  const offset = (currentPage - 1) * PER_PAGE
+
+  // const handleGetPage = (event, elementNum) => {
+  //   setSelectedPage(elementNum)
+  // }
+  const handlePage = (event, value) => {
+    setCurrentPage(value)
   }
 
   const [searchedKey, setSearchedKey] = React.useState('')
@@ -79,26 +89,24 @@ export default function category() {
   React.useEffect(() => {
     const requestUrl =
       process.env.REACT_APP_API_ENDPOINT +
-      `/users?populate=*&start=${(selectedPage - 1) * 7}&limit=${
-        selectedPage * 7
-      }&filters[$or][0][fullName][$contains]=${searchedKey}&filters[$or][1][username][$contains]=${searchedKey}`
+      `/users?populate=*&pagination[page]=${selectedPage}&pagination[pageSize]=7&filters[$or][0][fullName][$contains]=${searchedKey}&filters[$or][1][username][$contains]=${searchedKey}`
     fetch(requestUrl)
       .then((res) => res.json())
       .then((posts) => {
         setCustomer(posts)
+        setTotalPages(Math.ceil(posts.length / PER_PAGE))
       })
   }, [selectedPage, searchedKey, change])
 
   React.useEffect(() => {
     const requestUrl =
       process.env.REACT_APP_API_ENDPOINT +
-      `/users?populate=*&start=${(selectedPage - 1) * 7}&limit=${
-        selectedPage * 7
-      }&filters[fullName][$contains]=${searchedKey}`
+      `/users?populate=*&pagination[page]=${selectedPage}&pagination[pageSize]=7&filters[fullName][$contains]=${searchedKey}`
     fetch(requestUrl)
       .then((res) => res.json())
       .then((posts) => {
         setElementNum(posts)
+        setTotalPages(Math.ceil(posts.length / PER_PAGE))
       })
   }, [searchedKey])
 
@@ -193,16 +201,16 @@ export default function category() {
               <TableCell sx={{ color: 'white' }} align="center">
                 Trạng thái
               </TableCell>
-              {/* <TableCell sx={{ color: 'white' }} align="center">
+              <TableCell sx={{ color: 'white' }} align="center">
                 Trường
-              </TableCell> */}
+              </TableCell>
               <TableCell sx={{ color: 'white' }} align="center">
                 Thao tác
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {customer.map((row) => (
+            {customer.slice(offset, offset + PER_PAGE).map((row) => (
               <TableRow
                 key={row.name}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -317,7 +325,7 @@ export default function category() {
                     </Box>
                   )}
                 </TableCell>
-                {/* <TableCell align="left">{row.university}</TableCell> */}
+                <TableCell align="left">{row.university}</TableCell>
                 <TableCell align="center">
                   <IconButton
                     color="primary"
@@ -327,9 +335,9 @@ export default function category() {
                   >
                     <ConstructionIcon />
                   </IconButton>
-                  {/* <IconButton color="info">
+                  <IconButton color="info">
                     <CircleNotificationsIcon />
-                  </IconButton> */}
+                  </IconButton>
                   {/* <IconButton
                     color="error"
                     onClick={() => handleOpenDeleteUserModal(row)}
@@ -344,8 +352,9 @@ export default function category() {
       </TableContainer>
       <Box spacing={2} sx={{ padding: '20px' }}>
         <Pagination
-          count={Math.ceil(elementNum.length / 7)}
-          onChange={handleGetPage}
+          count={totalPages}
+          page={currentPage}
+          onChange={handlePage}
           showFirstButton
           showLastButton
         />
