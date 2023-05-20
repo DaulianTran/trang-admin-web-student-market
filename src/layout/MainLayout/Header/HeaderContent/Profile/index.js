@@ -27,7 +27,6 @@ import ProfileTab from './ProfileTab'
 import SettingTab from './SettingTab'
 
 // assets
-import avatar1 from 'assets/images/users/avatar-1.png'
 import {
   LogoutOutlined,
   SettingOutlined,
@@ -67,6 +66,8 @@ function a11yProps(index) {
 const Profile = () => {
   const theme = useTheme()
 
+  const avatar1 = require(process.env.REACT_APP_SERVER_ENDPOINT +
+    `uploads/ssm_30_teeme_e3556d7af0.jpg`)
   const anchorRef = useRef(null)
   const [open, setOpen] = useState(false)
   const handleToggle = () => {
@@ -114,7 +115,7 @@ const Profile = () => {
             src={avatar1}
             sx={{ width: 32, height: 32 }}
           />
-          <Typography variant="subtitle1">John Doe</Typography>
+          <Typography variant="subtitle1">hieutran</Typography>
         </Stack>
       </ButtonBase>
       <Popper
@@ -169,9 +170,9 @@ const Profile = () => {
                               sx={{ width: 32, height: 32 }}
                             />
                             <Stack>
-                              <Typography variant="h6">John Doe</Typography>
+                              <Typography variant="h6">hieutran</Typography>
                               <Typography variant="body2" color="textSecondary">
-                                UI/UX Designer
+                                admin
                               </Typography>
                             </Stack>
                           </Stack>

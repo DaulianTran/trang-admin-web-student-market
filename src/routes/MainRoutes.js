@@ -36,10 +36,6 @@ const MainRoutes = {
       element: <Category />,
     },
     {
-      path: 'login',
-      element: <AuthLogin />,
-    },
-    {
       path: 'dashboard',
       element: <DashboardDefault />,
     },

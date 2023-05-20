@@ -63,8 +63,11 @@ export default function DeleteCategoryModal(props) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {'Xác nhận xóa danh mục?'}
+        <DialogTitle
+          id="alert-dialog-title"
+          sx={{ fontWeight: 'bold', fontSize: '17px' }}
+        >
+          {'Xác nhận xóa danh mục ?'}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
