@@ -14,7 +14,7 @@ import 'assets/third-party/apex-chart.css'
 // project import
 import App from './App.js'
 import { store } from 'store'
-import reportWebVitals from './reportWebVitals'
+import reportWebVitals from './reportWebVitals.js'
 
 // ==============================|| MAIN - REACT DOM RENDER  ||============================== //
 
