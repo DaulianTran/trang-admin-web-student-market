@@ -12,7 +12,7 @@ import InputBase from '@mui/material/InputBase'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 
-// Icon import
+// Icon import.
 import SearchIcon from '@mui/icons-material/Search'
 import ConstructionIcon from '@mui/icons-material/Construction'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
